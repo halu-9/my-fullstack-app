@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    command: flask run --host=0.0.0.0 --port=5000
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # 匿名ボリューム（という書き方）でホスト側のnode_modulesでの上書き（無い場合は削除）が回避できる
+    working_dir: /app
+    command: npm run dev -- --host
