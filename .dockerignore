@@ -1,0 +1,5 @@
+# コンテナへのコピー対象外
+node_modules
+.git
+.DS_Store
+.vscode

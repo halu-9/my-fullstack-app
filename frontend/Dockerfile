@@ -10,9 +10,6 @@ RUN npm install -g npm@latest
 # node_modules 作成
 RUN npm install
 
-# Vite をグローバルに入れる
-RUN npm install -g vite
-
 COPY . .
 
 CMD ["npm", "run", "dev"]

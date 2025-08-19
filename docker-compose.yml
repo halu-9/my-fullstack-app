@@ -16,5 +16,8 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules # 匿名ボリューム（という書き方）でホスト側のnode_modulesでの上書き（無い場合は削除）が回避できる
+
     working_dir: /app
     command: npm run dev -- --host
+    environment:
+      - CHOKIDAR_USEPOLLING=true
