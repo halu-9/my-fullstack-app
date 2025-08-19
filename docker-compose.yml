@@ -9,6 +9,13 @@ services:
     working_dir: /app
     command: flask run --host=0.0.0.0 --port=5000
 
+  db:
+    image: mysql:8
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+
   frontend:
     build: ./frontend
     ports:
@@ -21,3 +28,6 @@ services:
     command: npm run dev -- --host
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  db_data:
